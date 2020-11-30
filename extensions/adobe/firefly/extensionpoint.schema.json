@@ -1,0 +1,73 @@
+{
+  "meta:license": [
+    "Copyright 2018 Adobe Systems Incorporated. All rights reserved.",
+    "This work is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license",
+    "you may not use this file except in compliance with the License. You may obtain a copy",
+    "of the License at https://creativecommons.org/licenses/by/4.0/"
+  ],
+  "$id": "https://ns.adobe.com/xdm/firefly/extensionpoint",
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "title": "Extension Point",
+  "meta:extensible": false,
+  "meta:abstract": false,
+  "type": "object",
+  "description": "Describes an extension point to be implemented by an extension.",
+  "definitions": {
+    "extensionpoint": {
+      "properties": {
+        "xdm:id": {
+          "title": "ID",
+          "type": "string",
+          "format": "uri",
+          "description": "Unique identifier of the extension point following a certain namespace mechanism. This id is defined by the service and enforced for the extension point on-boarding (see below)"
+        },
+        "xdm:title": {
+          "title": "Title",
+          "type": "string",
+          "description": "Title (aka short description) of the extension point"
+        },
+        "xdm:description": {
+          "title": "Description",
+          "type": "string",
+          "description": "Longer description of the extension point"
+        },
+        "documentation": {
+          "title": "Documentation",
+          "type": "string",
+          "format": "uri",
+          "description": "Developer documentation helping with the implementation of this extension point"
+        },
+        "xdm:schema": {
+          "oneOf": [
+            {
+              "$ref": "https://ns.adobe.com/xdm/firefly/extension"
+            },
+            {
+              "title": "Schema",
+              "type": "string",
+              "format": "uri",
+              "description": "ID of the extension descriptor schema (schema can be provided inline at which point the extension descriptor schema ID is <id>#schema where <id> is the extension point ID. This schema must be an extension of the base extension point schema"
+            }
+          ]
+        },
+        "apispec": {
+          "title": "API Specification",
+          "type": "string",
+          "format": "uri",
+          "description": "Swagger (?) link (URL)"
+        }
+      },
+      "required": [
+        "xdm:id",
+        "xdm:title",
+        "xdm:schema"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "#/definitions/extensionpoint"
+    }
+  ],
+  "meta:status": "experimental"
+}

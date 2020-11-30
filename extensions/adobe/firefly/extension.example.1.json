@@ -1,0 +1,13 @@
+{
+  "xdm:id": "248EAAD2-BACB-44E0-AA61-CCBEF08C2FAF",
+  "xdm:title": "Sample Extension Schema",
+  "xdm:description": "Sample Extension Schema illustrating how to in-line an extension schema with an extension point",
+  "documentation": "http://developers.adobe.com/firefly/extensions",
+  "vendor": "Adobe Firefly",
+  "extensionpoints": "http://ns.adobe.com/adobe/firefly/sample-extension-point",
+  "entrypoints": {
+    "http://ns.adobe.com/adobe/firefly/sample-endpoint": {
+        "href": "http://firefly.adobeioruntime.net/action"
+    }
+  }
+}

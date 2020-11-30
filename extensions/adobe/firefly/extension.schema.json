@@ -1,0 +1,90 @@
+{
+  "meta:license": [
+    "Copyright 2018 Adobe Systems Incorporated. All rights reserved.",
+    "This work is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license",
+    "you may not use this file except in compliance with the License. You may obtain a copy",
+    "of the License at https://creativecommons.org/licenses/by/4.0/"
+  ],
+  "$id": "https://ns.adobe.com/xdm/firefly/extensionpoint",
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "title": "Extension Point",
+  "meta:extensible": true,
+  "meta:abstract": false,
+  "type": "object",
+  "description": "Describes an extension point to be implemented by an extension.",
+  "definitions": {
+    "extension": {
+      "properties": {
+        "xdm:id": {
+          "title": "ID",
+          "type": "string",
+          "format": "uri",
+          "description": "Unique identifier of the extension point following a certain namespace mechanism. This id is defined by the service and enforced for the extension point on-boarding (see below)"
+        },
+        "xdm:title": {
+          "title": "Title",
+          "type": "string",
+          "description": "Title (aka short description) of the extension point"
+        },
+        "xdm:description": {
+          "title": "Description",
+          "type": "string",
+          "description": "Longer description of the extension point"
+        },
+        "documentation": {
+          "title": "Documentation",
+          "type": "string",
+          "format": "uri",
+          "description": "Developer documentation helping with the implementation of this extension point"
+        },
+        "vendor": {
+          "title": "Documentation",
+          "type": "string",
+          "format": "uri",
+          "description": "name of the IMS Org/Publisher submitting the extension. this field is preset by the extension registry upon submission of the descriptor."
+        },
+        "extensionpoints": {
+          "title": "",
+          "description": "list of extension points implemented by this extension (if this is list is singleton, this property can also be a simple string value)",
+          "type": [
+            "array",
+            "string"
+          ],
+          "items": {
+            "type": "string",
+            "format": "uri"
+          },
+          "minItems": 1,
+          "format": "uri"
+        },
+        "entrypoints": {
+          "description": "Links objects as defined for the '_links' object in JSON Hypertext Application Language (HAL) link objects (→ link to spec)",
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+                "$ref": "#/definitions/extension"
+            }
+          }
+        }
+      },
+      "patternProperties": {
+        ".*": {}
+      },
+      "required": [
+        "xdm:id",
+        "xdm:title",
+        "extensionpoints",
+        "entrypoints"
+      ]
+    },
+    "entrypoint": {
+      "$ref": "https://ns.adobe.com/xdm/external/hal/link"
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "#/definitions/extension"
+    }
+  ],
+  "meta:status": "experimental"
+}

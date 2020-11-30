@@ -1,0 +1,5 @@
+{
+  "xdm:id": "http://ns.adobe.com/adobe/firefly/sample-extension-point",
+  "xdm:title": "test",
+  "xdm:schema": "http://ns.adobe.com/adobe/firefly/sample-extension"
+}
