@@ -57,11 +57,7 @@
           "description": "Swagger (?) link (URL)"
         }
       },
-      "required": [
-        "xdm:id",
-        "xdm:title",
-        "xdm:schema"
-      ]
+      "required": ["xdm:id", "xdm:title", "xdm:schema"]
     }
   },
   "allOf": [

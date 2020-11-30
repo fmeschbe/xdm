@@ -46,10 +46,7 @@
         "extensionpoints": {
           "title": "",
           "description": "list of extension points implemented by this extension (if this is list is singleton, this property can also be a simple string value)",
-          "type": [
-            "array",
-            "string"
-          ],
+          "type": ["array", "string"],
           "items": {
             "type": "string",
             "format": "uri"
@@ -62,7 +59,7 @@
           "type": "object",
           "patternProperties": {
             ".*": {
-                "$ref": "#/definitions/extension"
+              "$ref": "#/definitions/extension"
             }
           }
         }
@@ -70,12 +67,7 @@
       "patternProperties": {
         ".*": {}
       },
-      "required": [
-        "xdm:id",
-        "xdm:title",
-        "extensionpoints",
-        "entrypoints"
-      ]
+      "required": ["xdm:id", "xdm:title", "extensionpoints", "entrypoints"]
     },
     "entrypoint": {
       "$ref": "https://ns.adobe.com/xdm/external/hal/link"

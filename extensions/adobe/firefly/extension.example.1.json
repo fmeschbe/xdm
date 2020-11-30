@@ -7,7 +7,7 @@
   "extensionpoints": "http://ns.adobe.com/adobe/firefly/sample-extension-point",
   "entrypoints": {
     "http://ns.adobe.com/adobe/firefly/sample-endpoint": {
-        "href": "http://firefly.adobeioruntime.net/action"
+      "href": "http://firefly.adobeioruntime.net/action"
     }
   }
 }
