@@ -54,12 +54,25 @@
           "minItems": 1,
           "format": "uri"
         },
-        "entrypoints": {
-          "description": "Links objects as defined for the '_links' object in JSON Hypertext Application Language (HAL) link objects (→ link to spec)",
+        "endpoints": {
+          "description": "End points implementing the API specification(s) as defined by the extension point(s) implemented by this extension",
           "type": "object",
           "patternProperties": {
             ".*": {
-              "$ref": "#/definitions/extension"
+              "title": "Endpoint(s)",
+              "description": "One or more endpoints as defined by extension point API specification. The name of the endpoint property must match the 'operationId' of the respective API path operation",
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/endpoint"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/endpoint"
+                  },
+                  "minItems": 1
+                }
+              ]
             }
           }
         }
@@ -67,10 +80,27 @@
       "patternProperties": {
         ".*": {}
       },
-      "required": ["xdm:id", "xdm:title", "extensionpoints", "entrypoints"]
+      "required": ["xdm:id", "xdm:title", "extensionpoints", "endpoints"]
     },
-    "entrypoint": {
-      "$ref": "https://ns.adobe.com/xdm/external/hal/link"
+    "endpoint": {
+      "title": "Endpoint Descriptor",
+      "description": "Describes a single end point implementing the prescribed extension point AP",
+      "properties": {
+        "href": {
+          "title": "End point URL",
+          "description": "The URL which may be an URI template as described by the API specification",
+          "type": "string",
+          "format": "uri-template"
+        }
+      },
+      "patternProperties": {
+        ".*": {
+          "title": "End point descriptor properties",
+          "description": "End point descriptor properties can be prescribed by the Extension Point API specification or by the Extension Point documentation to help the service selecting amongst multiple end points of the same endpoint ID",
+          "type": ["string", "boolean", "number", "null"]
+        }
+      },
+      "required": ["href"]
     }
   },
   "allOf": [
