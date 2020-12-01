@@ -37,27 +37,14 @@
           "format": "uri",
           "description": "Developer documentation helping with the implementation of this extension point"
         },
-        "xdm:schema": {
-          "oneOf": [
-            {
-              "$ref": "https://ns.adobe.com/xdm/firefly/extension"
-            },
-            {
-              "title": "Schema",
-              "type": "string",
-              "format": "uri",
-              "description": "ID of the extension descriptor schema (schema can be provided inline at which point the extension descriptor schema ID is <id>#schema where <id> is the extension point ID. This schema must be an extension of the base extension point schema"
-            }
-          ]
-        },
         "apispec": {
           "title": "API Specification",
           "type": "string",
           "format": "uri",
-          "description": "Swagger (?) link (URL)"
+          "description": "Link to OpenAPI documentation of the extension API"
         }
       },
-      "required": ["xdm:id", "xdm:title", "xdm:schema"]
+      "required": ["xdm:id", "xdm:title"]
     }
   },
   "allOf": [

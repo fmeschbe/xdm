@@ -8,7 +8,7 @@
   "$id": "https://ns.adobe.com/xdm/firefly/extensionpoint",
   "$schema": "http://json-schema.org/draft-06/schema#",
   "title": "Extension Point",
-  "meta:extensible": true,
+  "meta:extensible": false,
   "meta:abstract": false,
   "type": "object",
   "description": "Describes an extension point to be implemented by an extension.",
