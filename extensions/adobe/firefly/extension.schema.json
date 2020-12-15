@@ -18,8 +18,9 @@
         "xdm:id": {
           "title": "ID",
           "type": "string",
-          "format": "uri",
-          "description": "Unique identifier of the extension point following a certain namespace mechanism. This id is defined by the service and enforced for the extension point on-boarding (see below)"
+          "meta:immutable": true,
+          "meta:usereditable": false,
+          "description": "Unique identifier of the extension. This id is assigned by the service and cannot be modified."
         },
         "xdm:title": {
           "title": "Title",

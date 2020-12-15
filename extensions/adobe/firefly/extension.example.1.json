@@ -1,5 +1,5 @@
 {
-  "xdm:id": "248EAAD2-BACB-44E0-AA61-CCBEF08C2FAF",
+  "xdm:id": "urn:uuid:248EAAD2-BACB-44E0-AA61-CCBEF08C2FAF",
   "xdm:title": "Sample Extension Schema",
   "xdm:description": "Sample Extension Schema illustrating how to in-line an extension schema with an extension point",
   "documentation": "http://developers.adobe.com/firefly/extensions",
