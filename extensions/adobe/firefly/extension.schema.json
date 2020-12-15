@@ -32,6 +32,12 @@
           "type": "string",
           "description": "Longer description of the extension point"
         },
+        "icon": {
+          "title": "Icon",
+          "type": "string",
+          "format": "uri",
+          "description": "Link to an icon representing this extension."
+        },
         "documentation": {
           "title": "Documentation",
           "type": "string",
