@@ -50,6 +50,9 @@
   "allOf": [
     {
       "$ref": "#/definitions/extensionpoint"
+    },
+    {
+      "$ref": "https://ns.adobe.com/xdm/firefly/common#/definitions/common-properties"
     }
   ],
   "meta:status": "experimental"
