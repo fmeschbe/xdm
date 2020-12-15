@@ -50,44 +50,59 @@
           "format": "uri",
           "description": "name of the IMS Org/Publisher submitting the extension. this field is preset by the extension registry upon submission of the descriptor."
         },
-        "extensionpoints": {
-          "title": "",
-          "description": "list of extension points implemented by this extension (if this is list is singleton, this property can also be a simple string value)",
-          "type": ["array", "string"],
-          "items": {
-            "type": "string",
-            "format": "uri"
-          },
-          "minItems": 1,
-          "format": "uri"
-        },
         "endpoints": {
-          "description": "End points implementing the API specification(s) as defined by the extension point(s) implemented by this extension",
-          "type": "object",
+          "title": "Endpoints",
+          "description": "Endpoints by Extension Points implementing the respective extension point operation. This object is keyed by Extension Point xdm:id",
           "patternProperties": {
             ".*": {
-              "title": "Endpoint(s)",
-              "description": "One or more endpoints as defined by extension point API specification. The name of the endpoint property must match the 'operationId' of the respective API path operation",
-              "oneOf": [
-                {
-                  "$ref": "#/definitions/endpoint"
-                },
-                {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/endpoint"
-                  },
-                  "minItems": 1
-                }
-              ]
+              "$ref": "#/definitions/extensionpoint"
             }
-          }
+          },
+          "examples": [
+            {
+              "extPoint/v1": { "opIdA": { "href": "https://example.org/hrefV1" } },
+              "extPoint/v2": { "opIdA": { "href": "https://example.org/hrefV2" } }
+            }
+          ]
         }
       },
       "patternProperties": {
         ".*": {}
       },
-      "required": ["xdm:id", "xdm:title", "extensionpoints", "endpoints"]
+      "required": ["xdm:title", "endpoints"]
+    },
+    "extensionpoint": {
+      "description": "Endpoints implementing a single Extension Point. This object is keyed by the operationID of the Extension Points API specification",
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "$ref": "#/definitions/endpoints"
+        }
+      },
+      "examples": [
+        { "opIdA": { "href": "https://example.org/href" } },
+        { "opIdX": [ { "href": "https://example.org/href1", "variant": 1 }, { "href": "https://example.org/href2", "variant": 2 } ] }
+      ]
+    },
+    "endpoints": {
+      "title": "Endpoint(s)",
+      "description": "One or more endpoints as defined by extension point API specification for the Extension Point's operation.",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/endpoint"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/endpoint"
+          },
+          "minItems": 1
+        }
+      ],
+      "examples": [
+        { "href": "https://example.org/href" },
+        [ { "href": "https://example.org/href1", "variant": 1 }, { "href": "https://example.org/href2", "variant": 2 } ]
+      ]
     },
     "endpoint": {
       "title": "Endpoint Descriptor",
@@ -107,7 +122,11 @@
           "type": ["string", "boolean", "number", "null"]
         }
       },
-      "required": ["href"]
+      "required": ["href"],
+      "examples": [
+        { "href": "https://example.org/href" },
+        { "href": "https://example.org/href", "lang": "de", "otherProp": "withValue" }
+      ]
     }
   },
   "allOf": [
