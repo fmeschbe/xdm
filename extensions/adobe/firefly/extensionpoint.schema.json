@@ -26,6 +26,12 @@
           "type": "string",
           "description": "Title (aka short description) of the extension point"
         },
+        "xdm:version": {
+          "title": "Version",
+          "description": "Version of this Extension Point definition",
+          "type": "string",
+          "default": null
+        },
         "xdm:description": {
           "title": "Description",
           "type": "string",
@@ -44,7 +50,7 @@
           "description": "Link to OpenAPI documentation of the extension API"
         }
       },
-      "required": ["xdm:id", "xdm:title"]
+      "required": ["xdm:id", "xdm:title", "xdm:documentation"]
     }
   },
   "allOf": [
